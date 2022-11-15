@@ -4,6 +4,7 @@
  */
 package model;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -11,6 +12,7 @@ import java.util.Date;
  * @author ejrdr
  */
 public class Task {
+
     private int id;
     private int idProject;
     private String name;
@@ -20,12 +22,12 @@ public class Task {
     private Date deadline;
     private Date createdAt;
     private Date updatedAt;
-    
-    public Task(){
+
+    public Task() {
         this.createdAt = new Date();
         this.updatedAt = new Date();
     }
-    
+
     public Task(int id, int idProject, String name, String description, String notes, boolean isCompleted, Date deadline, Date createdAt, Date updatedAt) {
         this.id = id;
         this.idProject = idProject;
@@ -37,7 +39,6 @@ public class Task {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
-   
 
     public int getId() {
         return id;
@@ -115,5 +116,5 @@ public class Task {
     public String toString() {
         return "Task{" + "id=" + id + ", idProject=" + idProject + ", name=" + name + ", description=" + description + ", notes=" + notes + ", isCompleted=" + isCompleted + ", deadline=" + deadline + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + '}';
     }
-    
+
 }

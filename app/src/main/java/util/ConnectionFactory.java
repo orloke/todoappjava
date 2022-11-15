@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.TimeZone;
 
 /**
  *
@@ -16,7 +17,7 @@ import java.sql.ResultSet;
 public class ConnectionFactory {
 
     public static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    public static final String URL = "jdbc:mysql://localhost:3306/todoapp?useTimezone=true&serverTimezone=UTC&useSSL=false";
+    public static final String URL = "jdbc:mysql://localhost:3306/todoapp?useTimezone=true&serverTimezone="+TimeZone.getDefault().getID()+"&useSSL=false";
     public static final String USER = "root";
     public static final String PASS = "password";
 
