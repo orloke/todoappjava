@@ -20,7 +20,11 @@ public class Task {
     private Date deadline;
     private Date createdAt;
     private Date updatedAt;
-
+    
+    public Task(){
+        this.createdAt = new Date();
+    }
+    
     public Task(int id, int idProject, String name, String description, String notes, boolean isCompleted, Date deadline, Date createdAt, Date updatedAt) {
         this.id = id;
         this.idProject = idProject;
@@ -32,10 +36,7 @@ public class Task {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
-    
-    public Task(){
-        this.createdAt = new Date();
-    }
+   
 
     public int getId() {
         return id;
@@ -77,7 +78,7 @@ public class Task {
         this.notes = notes;
     }
 
-    public boolean isIsCompleted() {
+    public boolean getIsCompleted() {
         return isCompleted;
     }
 

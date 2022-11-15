@@ -15,8 +15,8 @@ import java.sql.ResultSet;
  */
 public class ConnectionFactory {
 
-    public static final String DRIVER = "com.mysql.jdbc.Driver";
-    public static final String URL = "jdbc:mysql://localhost:3306/todoapp";
+    public static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+    public static final String URL = "jdbc:mysql://localhost:3306/todoapp?useTimezone=true&serverTimezone=UTC&useSSL=false";
     public static final String USER = "root";
     public static final String PASS = "password";
 
@@ -25,7 +25,7 @@ public class ConnectionFactory {
             Class.forName(DRIVER);
             return DriverManager.getConnection(URL, USER, PASS);
         } catch (Exception ex) {
-            throw new RuntimeException("Erro na conexão com de dados", ex);
+            throw new RuntimeException("Erro na conexão com o banco de dados", ex);
         }
     }
 
