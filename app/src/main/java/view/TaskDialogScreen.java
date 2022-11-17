@@ -191,26 +191,36 @@ public class TaskDialogScreen extends javax.swing.JDialog {
     private void jLabelToolBarAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelToolBarAddMouseClicked
         // TODO add your handling code here:
         try {
-            Task task = new Task();
-            
-            task.setIdProject(this.project.getId());
-            task.setName(jTextFieldName.getText());
-            task.setDescription(jTextAreaDescription.getText());
-            task.setNotes(jTextAreaNote.getText());
-            task.setIsCompleted(false);
+            if (!jTextFieldName.getText().isEmpty()
+                    && !jFormattedTextFieldDeadline.getText().isBlank()) {
+                Task task = new Task();
 
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            Date deadLine = dateFormat.parse(jFormattedTextFieldDeadline.getText());
+                task.setIdProject(this.project.getId());
+                task.setName(jTextFieldName.getText());
+                task.setDescription(jTextAreaDescription.getText());
+                task.setNotes(jTextAreaNote.getText());
+                task.setIsCompleted(false);
 
-            task.setDeadline(deadLine);
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                Date deadLine = dateFormat.parse(jFormattedTextFieldDeadline.getText());
 
-            controller.save(task);
-            JOptionPane.showMessageDialog(rootPane, "Tarefa salva com sucesso!");
+                task.setDeadline(deadLine);
+
+                controller.save(task);
+                JOptionPane.showMessageDialog(rootPane, 
+                        "Tarefa salva com sucesso!");
+                
+                this.dispose();
+
+            } else {
+                JOptionPane.showMessageDialog(rootPane, 
+                        "Tarefa não foi salva. Alguns dos campos "
+                                + "não foram preenchidos.");
+            }
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
-        this.dispose();
     }//GEN-LAST:event_jLabelToolBarAddMouseClicked
 
     /**
@@ -276,5 +286,4 @@ public class TaskDialogScreen extends javax.swing.JDialog {
         this.project = project;
     }
 
-    
 }
